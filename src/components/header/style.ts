@@ -7,5 +7,5 @@ export const HeaderWrapper = styled.header`
 `;
 
 export const LogoWrapper = styled.h1`
-    font-size: ${prop => prop.theme.fontSize.tertiary};
+    font-size: ${prop => prop.theme.fontSize.quaternary};
 `;

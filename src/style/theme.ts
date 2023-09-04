@@ -3,7 +3,7 @@ export const theme = {
 		primary: "#F4F4F4",
 		secondary: "#FFFFFF",
 		tertiary: "#131921",
-		quaternary: "#232F3E",
+		quaternary: "#e09c12",
 	},
 	fonts: {
 		primary: "Oxygen",
@@ -11,6 +11,12 @@ export const theme = {
 	fontSize: {
 		primary: "16px",
 		secondary: "18px",
-		tertiary: "25px",
+		tertiary: "22px",
+		quaternary: "27px",
 	},
+	responsive: {
+		lg: "1368px",
+		md: "1024px",
+		sm:"768px",
+	}
 };
