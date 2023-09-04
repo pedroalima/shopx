@@ -9,7 +9,8 @@ export const theme = {
 		primary: "Oxygen",
 	},
 	fontSize: {
-		primary: "20px",
-		secondary: "14px",
+		primary: "16px",
+		secondary: "18px",
+		tertiary: "25px",
 	},
 };

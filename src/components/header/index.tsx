@@ -1,9 +1,9 @@
-import { HeaderWrapper } from "./style";
+import { HeaderWrapper, LogoWrapper } from "./style";
 
 export const Header = () => {
 	return (
 		<HeaderWrapper>
-			<h1>Shop X</h1>
+			<LogoWrapper>Shop X</LogoWrapper>
 		</HeaderWrapper>
 	);
 };
