@@ -9,7 +9,7 @@ export const CardWrapper = styled.li`
     align-items: start;
     gap: 0.5rem;
 
-    @media screen and (min-width: ${prop => prop.theme.responsive.sm}) {
+    @media screen and (min-width: ${prop => prop.theme.breakpoints.sm}) {
         width: 300px;
     }
 `;
@@ -20,7 +20,7 @@ export const ImageWrapper = styled.div`
     padding: 0.2rem;
     width: 100%;
 
-    @media screen and (min-width: ${prop => prop.theme.responsive.sm}) {
+    @media screen and (min-width: ${prop => prop.theme.breakpoints.sm}) {
         height: 230px;
     }
 `;

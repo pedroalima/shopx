@@ -14,7 +14,7 @@ export const theme = {
 		tertiary: "22px",
 		quaternary: "27px",
 	},
-	responsive: {
+	breakpoints: {
 		lg: "1368px",
 		md: "1024px",
 		sm:"768px",
