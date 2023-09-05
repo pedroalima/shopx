@@ -1,4 +1,5 @@
 import { Header } from "../components/header";
+import { Cart } from "../features/cart";
 import { Inventory } from "../features/inventory";
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
 		<>
 			<Header />
 			<Inventory />
+			<Cart />
 		</>
 	);
 }
