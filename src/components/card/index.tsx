@@ -1,4 +1,5 @@
-import { Button, CardWrapper, ImageInventory, ImageWrapper, PriceWrapper, TitleWrapper } from "./style";
+import { useDispatch } from "react-redux";
+import * as S from "./style";
 
 type ItemType = {
 	id: number;
@@ -9,14 +10,23 @@ type ItemType = {
 
 export const Card = ({ item } : { item: ItemType}) => {
 	const { name, price, img } = item;
+	
+	const dispatch = useDispatch();
+
+	const handleAddProductClick = () => {
+		dispatch({
+			type: "cart/addProduct"
+		});
+	};
+
 	return (
-		<CardWrapper>
-			<ImageWrapper>
-				<ImageInventory src={img} alt={name} />
-			</ImageWrapper>
-			<TitleWrapper>{name}</TitleWrapper>
-			<PriceWrapper>{price}</PriceWrapper>
-			<Button>Add to Cart</Button>
-		</CardWrapper>
+		<S.CardWrapper>
+			<S.ImageWrapper>
+				<S.ImageInventory src={img} alt={name} />
+			</S.ImageWrapper>
+			<S.TitleWrapper>{name}</S.TitleWrapper>
+			<S.PriceWrapper>{price}</S.PriceWrapper>
+			<S.Button onClick={handleAddProductClick}>Add to Cart</S.Button>
+		</S.CardWrapper>
 	);
 };

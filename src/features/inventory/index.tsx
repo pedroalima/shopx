@@ -5,8 +5,8 @@ import { InventoryWrapper } from "./style";
 import { useSelector } from "react-redux/es/exports";
 
 export const Inventory = () => {
-	const { currentUser } = useSelector((rootReducer: RootState) => rootReducer.userReducer);
-	console.log({currentUser});
+	const { id, name, price } = useSelector((rootReducer: RootState) => rootReducer.cartReducer);
+	console.log({id, name, price});
 	return (
 		<InventoryWrapper>
 			{inventoryData.map(item => (
