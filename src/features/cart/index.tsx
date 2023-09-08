@@ -1,6 +1,5 @@
 import { CartItemsWrapper, CartWrapper, TotalPrice } from "./style";
 
-
 export const Cart = () => {
 	return (
 		<CartWrapper>
