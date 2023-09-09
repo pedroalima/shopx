@@ -9,18 +9,14 @@ type ItemType = {
 };
 
 export const Card = ({ item } : { item: ItemType}) => {
-	const { name, price, img, id } = item;
+	const { name, price, img } = item;
 	
 	const dispatch = useDispatch();
 
 	const handleAddProductClick = () => {
 		dispatch({
 			type: "cart/addProduct",
-			payload: {
-				id: id,
-				name: name,
-				price: price,
-			}
+			payload: item
 		});
 	};
 

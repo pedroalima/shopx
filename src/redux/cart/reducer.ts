@@ -4,13 +4,13 @@ interface CartSliceType {
         id: string | number,
         name: string,
         price: string | number,
+		img: string,
     }
 }
 
 const initialState = {
-	id: "",
-	name: "",
-	price: "",
+	products: [],
+	totalPrice: 0
 };
 
 export const cartReducer = (state = initialState, action: CartSliceType) => {
@@ -18,9 +18,7 @@ export const cartReducer = (state = initialState, action: CartSliceType) => {
 	case "cart/addProduct":
 		return {
 			...state, 
-			id: action.payload.id,
-			name: action.payload.name,
-			price: action.payload.price,
+			products: [...state.products, action.payload],
 		};
 	default:
 		return state;
