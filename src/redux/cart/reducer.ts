@@ -18,9 +18,9 @@ export const cartReducer = (state = initialState, action: CartSliceType) => {
 	case "cart/addProduct":
 		return {
 			...state, 
-			id: 4,
-			name: "martelo",
-			price: 49.99,
+			id: action.payload.id,
+			name: action.payload.name,
+			price: action.payload.price,
 		};
 	default:
 		return state;
