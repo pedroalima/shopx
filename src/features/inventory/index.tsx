@@ -6,8 +6,8 @@ export const Inventory = () => {
 	return (
 		<S.InventoryWrapper>
 			<S.InventoryList>
-				{inventoryData.map(item => (
-					<Card key={item.id} item={item} />
+				{inventoryData.map(product => (
+					<Card key={product.id} product={product} />
 				))}
 			</S.InventoryList>
 		</S.InventoryWrapper>

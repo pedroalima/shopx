@@ -1,23 +1,21 @@
 import { useDispatch } from "react-redux";
 import * as S from "./style";
+import { addProduct } from "../../redux/cart/actions";
 
-type ItemType = {
+export type ProductType = {
 	id: number;
 	name: string;
 	price: number;
 	img: string;
 };
 
-export const Card = ({ item } : { item: ItemType}) => {
-	const { name, price, img } = item;
+export const Card = ({ product } : { product: ProductType}) => {
+	const { name, price, img } = product;
 	
 	const dispatch = useDispatch();
 
 	const handleAddProductClick = () => {
-		dispatch({
-			type: "cart/addProduct",
-			payload: item
-		});
+		dispatch(addProduct(product));
 	};
 
 	return (
