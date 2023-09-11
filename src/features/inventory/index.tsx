@@ -1,13 +1,15 @@
 import { Card } from "../../components/card";
 import { inventoryData } from "../../utils/data";
-import { InventoryWrapper } from "./style";
+import * as S from "./style";
 
 export const Inventory = () => {
 	return (
-		<InventoryWrapper>
-			{inventoryData.map(item => (
-				<Card key={item.id} item={item} />
-			))}
-		</InventoryWrapper>
+		<S.InventoryWrapper>
+			<S.InventoryList>
+				{inventoryData.map(item => (
+					<Card key={item.id} item={item} />
+				))}
+			</S.InventoryList>
+		</S.InventoryWrapper>
 	);
 };

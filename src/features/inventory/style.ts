@@ -1,7 +1,18 @@
 import { styled } from "styled-components";
 
-export const InventoryWrapper = styled.ul`
+export const InventoryWrapper = styled.section`
+    padding: 0 1.5rem;
+    margin: 2rem 0 7rem 0;
+
+    @media screen and (min-width: ${prop => prop.theme.breakpoints.sm}) {
+        margin: 4.3rem 0;
+    };
+`;
+
+export const InventoryList = styled.ul`
     list-style: none;
     padding: 0 1.5rem;
-    margin: 2rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
 `;
