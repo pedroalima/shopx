@@ -12,14 +12,13 @@ interface ProductType {
 }
 
 export const Cart = () => {
-	const { products } : {products: ProductType[]} = useSelector((rootReducer: RootState) => rootReducer.cartReducer);
+	const { products, totalPrice } : {products: ProductType[], totalPrice: number} = useSelector((rootReducer: RootState) => rootReducer.cartReducer);
 	const dispatch = useDispatch();
 
 	const handleRemoveProduct = (product: ProductType) => {
 		dispatch(removeProduct(product));
 	};
 	
-	console.log({products});
 	return (
 		<CartWrapper>
 			{products && products.map((product: ProductType, i: number) => (
@@ -29,7 +28,7 @@ export const Cart = () => {
 					<span>R$ {product.price} - ( {product.price * product.quantity} )</span>
 				</CartItemsWrapper>
 			))}
-			<TotalPrice><span>Total : </span><strong>R$ ???,??</strong></TotalPrice>
+			<TotalPrice><span>Total : </span><strong>R$ {totalPrice}</strong></TotalPrice>
 		</CartWrapper>
 	);
 };

@@ -36,17 +36,20 @@ export const cartReducer = (state: CartStateType = initialState , action: CartAc
 						? { ...product, quantity: product.quantity + 1} 
 						: product
 				),
+				totalPrice: state.totalPrice + action.payload.price
 			};
 		}
 		// se não existir, apenas adicione
 		return {
 			...state,
-			products: [...state.products, {...action.payload, quantity: 1 }]
+			products: [...state.products, {...action.payload, quantity: 1 }],
+			totalPrice: state.totalPrice + action.payload.price
 		};
 	case "cart/removeProduct":
 		return {
 			...state,
-			products: state.products.filter(product => product.id !== action.payload.id)
+			products: state.products.filter(product => product.id !== action.payload.id),
+			totalPrice: state.totalPrice - (action.payload.price * action.payload.quantity)
 		};
 	default:
 		return state;
