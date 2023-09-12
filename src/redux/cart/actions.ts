@@ -5,6 +5,11 @@ export const addProduct = (payload: ProductType ) => ({
 	payload,
 });
 
+export const productPlus = (payload: ProductType ) => ({
+	type: "cart/productPlus",
+	payload,
+});
+
 export const removeProduct = (payload: ProductType) => ({
 	type: "cart/removeProduct",
 	payload,

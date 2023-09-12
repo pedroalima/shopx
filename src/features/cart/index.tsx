@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/root-reducer";
-import { CartItemsWrapper, CartWrapper, TotalPrice } from "./style";
-import { removeProduct } from "../../redux/cart/actions";
+import * as S from "./style";
+import { productPlus, removeProduct } from "../../redux/cart/actions";
 
 interface ProductType {
 	id: number,
@@ -18,17 +18,26 @@ export const Cart = () => {
 	const handleRemoveProduct = (product: ProductType) => {
 		dispatch(removeProduct(product));
 	};
+
+	const handleProductPlus = (product: ProductType) => {
+		dispatch(productPlus(product));
+	};
 	
 	return (
-		<CartWrapper>
+		<S.CartWrapper>
 			{products && products.map((product: ProductType, i: number) => (
-				<CartItemsWrapper key={i}>
-					<span>{product.quantity} - {product.name}</span>
+				<S.CartItemsWrapper key={i}>
+					<S.CartItemsQuantityWrapper> 
+						<button>-</button>
+						<span>{product.quantity}</span>
+						<button onClick={()=> handleProductPlus(product)}>+</button>
+						<span>{product.name}</span>
+					</S.CartItemsQuantityWrapper>
 					<button onClick={()=> handleRemoveProduct(product)}>X</button>
 					<span>R$ {product.price} - ( {product.price * product.quantity} )</span>
-				</CartItemsWrapper>
+				</S.CartItemsWrapper>
 			))}
-			<TotalPrice><span>Total : </span><strong>R$ {totalPrice}</strong></TotalPrice>
-		</CartWrapper>
+			<S.TotalPrice><span>Total : </span><strong>R$ {totalPrice}</strong></S.TotalPrice>
+		</S.CartWrapper>
 	);
 };

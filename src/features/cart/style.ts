@@ -15,6 +15,13 @@ export const CartItemsWrapper = styled.div`
     justify-content: space-between;
 `;
 
+export const CartItemsQuantityWrapper = styled.div`
+    display: flex;
+    justify-content: start;
+    gap: 0.5rem;
+    min-width: 130px;
+`;
+
 export const TotalPrice = styled.h2`
     font-size: ${prop => prop.theme.fontSize.tertiary};
     display: flex;

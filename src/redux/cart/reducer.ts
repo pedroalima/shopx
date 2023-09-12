@@ -7,7 +7,7 @@ interface ProductType {
 }
 
 interface CartActionType {
-	type: "cart/addProduct" | "cart/removeProduct",
+	type: "cart/addProduct" | "cart/removeProduct" | "cart/productPlus",
     payload: ProductType,
 }
 
@@ -31,8 +31,8 @@ export const cartReducer = (state: CartStateType = initialState , action: CartAc
 		if (productIsAlready) {
 			return {
 				...state,
-				products: state.products.map( 
-					product => product.id === action.payload.id 
+				products: state.products.map( product => 
+					product.id === action.payload.id 
 						? { ...product, quantity: product.quantity + 1} 
 						: product
 				),
@@ -45,7 +45,19 @@ export const cartReducer = (state: CartStateType = initialState , action: CartAc
 			products: [...state.products, {...action.payload, quantity: 1 }],
 			totalPrice: state.totalPrice + action.payload.price
 		};
+	case "cart/productPlus":
+		// se a quantidade for maior que zero, aumente em 1
+		return {
+			...state,
+			products: state.products.map(product => 
+				product.quantity > 0 
+					? { ...product, quantity: product.quantity + 1 } 
+					: product
+			),
+			totalPrice: state.totalPrice + action.payload.price
+		};
 	case "cart/removeProduct":
+		// se o id do produto for igual ao do component clicado retire do array
 		return {
 			...state,
 			products: state.products.filter(product => product.id !== action.payload.id),
