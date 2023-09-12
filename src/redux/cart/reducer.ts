@@ -7,7 +7,7 @@ interface ProductType {
 }
 
 interface CartActionType {
-	type: "cart/addProduct" | "cart/removeProduct" | "cart/productPlus",
+	type: "cart/addProduct" | "cart/removeProduct" | "cart/productPlus" | "cart/productMinus",
     payload: ProductType,
 }
 
@@ -30,9 +30,11 @@ export const cartReducer = (state: CartStateType = initialState , action: CartAc
 		// se existir, aumentar a quantidade em 1
 		if (productIsAlready) {
 			return {
+				// retorne todo state
 				...state,
-				products: state.products.map( product => 
-					product.id === action.payload.id 
+				// alterando products
+				products: state.products.map( product => // iterando sobre cada product
+					product.id === action.payload.id // se o id do product for igual ao do clicado
 						? { ...product, quantity: product.quantity + 1} 
 						: product
 				),
@@ -46,21 +48,35 @@ export const cartReducer = (state: CartStateType = initialState , action: CartAc
 			totalPrice: state.totalPrice + action.payload.price
 		};
 	case "cart/productPlus":
-		// se a quantidade for maior que zero, aumente em 1
+		// aumentando a quantidade do product em 1
+		return {
+			// retorne todo state
+			...state, 
+			// alterando products
+			products: state.products.map(product => // iterando sobre cada product
+				product.id === action.payload.id // se o id do product for igual ao do clicado
+					? { ...product, quantity: product.quantity + 1 } // sim, aumente a quantidade em 1
+					: product // não, mantenha a quantidade
+			),
+			// alterando totalPrice
+			totalPrice: state.totalPrice + action.payload.price
+		};
+	case "cart/productMinus":
+		// reduzindo a quantidade do product em 1
 		return {
 			...state,
 			products: state.products.map(product => 
-				product.quantity > 0 
-					? { ...product, quantity: product.quantity + 1 } 
+				product.id === action.payload.id
+					? { ...product, quantity: product.quantity - 1 }
 					: product
 			),
 			totalPrice: state.totalPrice + action.payload.price
 		};
 	case "cart/removeProduct":
-		// se o id do produto for igual ao do component clicado retire do array
+		// removendo produto (product) do carrinho (cart)
 		return {
 			...state,
-			products: state.products.filter(product => product.id !== action.payload.id),
+			products: state.products.filter(product => product.id !== action.payload.id), // se o id do produto for igual ao do component clicado retire do array
 			totalPrice: state.totalPrice - (action.payload.price * action.payload.quantity)
 		};
 	default:

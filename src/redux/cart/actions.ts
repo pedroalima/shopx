@@ -10,6 +10,11 @@ export const productPlus = (payload: ProductType ) => ({
 	payload,
 });
 
+export const productMinus = (payload: ProductType ) => ({
+	type: "cart/productMinus",
+	payload,
+});
+
 export const removeProduct = (payload: ProductType) => ({
 	type: "cart/removeProduct",
 	payload,
