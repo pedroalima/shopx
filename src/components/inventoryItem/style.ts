@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export const CardWrapper = styled.li`
+export const InventoryItemWrapper = styled.li`
     background: ${prop => prop.theme.colors.secondary};
     border-radius: 0.5rem;
     padding: 1rem;

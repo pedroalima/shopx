@@ -1,3 +1,4 @@
+// TYPES
 interface ProductType {
 	id: number,
 	name: string,
@@ -20,7 +21,7 @@ const initialState = {
 	products: [],
 	totalPrice: 0
 };
-
+// REDUCER
 export const cartReducer = (state: CartStateType = initialState , action: CartActionType) => {
 	// Verifica se o produto já existe
 	const productIsAlready = state.products.some((product) => product.id === action.payload.id);
@@ -64,13 +65,16 @@ export const cartReducer = (state: CartStateType = initialState , action: CartAc
 	case "cart/productMinus":
 		// reduzindo a quantidade do product em 1
 		return {
+			// retorne todo state
 			...state,
-			products: state.products.map(product => 
-				product.id === action.payload.id
-					? { ...product, quantity: product.quantity - 1 }
-					: product
-			),
-			totalPrice: state.totalPrice + action.payload.price
+			// alterando products
+			products: state.products.map(product => // iterando sobre cada product
+				product.id === action.payload.id //se o id do product for igual ao do clicado
+					? { ...product, quantity: product.quantity - 1 } // sim, reduz a quantidade em 1
+					: product //não, mantenha a quantidade
+			).filter(product => product.quantity > 0), // retorne apenas os product que tem a quantidade maior que zero
+			// alterando totalPrice
+			totalPrice: state.totalPrice - action.payload.price
 		};
 	case "cart/removeProduct":
 		// removendo produto (product) do carrinho (cart)

@@ -9,7 +9,7 @@ export type ProductType = {
 	img: string;
 };
 
-export const Card = ({ product } : { product: ProductType}) => {
+export const InventoryItem = ({ product } : { product: ProductType}) => {
 	const { name, price, img } = product;
 	
 	const dispatch = useDispatch();
@@ -19,13 +19,13 @@ export const Card = ({ product } : { product: ProductType}) => {
 	};
 
 	return (
-		<S.CardWrapper>
+		<S.InventoryItemWrapper>
 			<S.ImageWrapper>
 				<S.ImageInventory src={img} alt={name} />
 			</S.ImageWrapper>
 			<S.TitleWrapper>{name}</S.TitleWrapper>
 			<S.PriceWrapper>{price}</S.PriceWrapper>
 			<S.Button onClick={handleAddProductClick}>Add to Cart</S.Button>
-		</S.CardWrapper>
+		</S.InventoryItemWrapper>
 	);
 };
