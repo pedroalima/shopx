@@ -7,4 +7,4 @@ export const rootReducer = combineReducers({
 	cartReducer,
 });
 
-export type RootState = ReturnType<typeof rootReducer>
+export type RootStateType = ReturnType<typeof rootReducer>

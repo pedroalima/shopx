@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import * as S from "./style";
 import { addProduct } from "../../redux/cart/actions";
+import { currencyBR } from "../../utils/localCurrency";
 
 export type ProductType = {
 	id: number;
@@ -24,7 +25,7 @@ export const Card = ({ product } : { product: ProductType}) => {
 				<S.ImageInventory src={img} alt={name} />
 			</S.ImageWrapper>
 			<S.TitleWrapper>{name}</S.TitleWrapper>
-			<S.PriceWrapper>{price}</S.PriceWrapper>
+			<S.PriceWrapper>{currencyBR(price)}</S.PriceWrapper>
 			<S.Button onClick={handleAddProductClick}>Add to Cart</S.Button>
 		</S.CardWrapper>
 	);
