@@ -1,4 +1,4 @@
-import { Card } from "../../components/card";
+import { InventoryItem } from "../inventoryItem";
 import { inventoryData } from "../../utils/data";
 import * as S from "./style";
 
@@ -7,7 +7,7 @@ export const Inventory = () => {
 		<S.InventoryWrapper>
 			<S.InventoryList>
 				{inventoryData.map(product => (
-					<Card key={product.id} product={product} />
+					<InventoryItem key={product.id} product={product} />
 				))}
 			</S.InventoryList>
 		</S.InventoryWrapper>

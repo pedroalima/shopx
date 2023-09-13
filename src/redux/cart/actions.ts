@@ -1,4 +1,4 @@
-import { ProductType } from "../../components/card";
+import { ProductType } from "../../components/inventoryItem";
 
 export const addProduct = (payload: ProductType ) => ({
 	type: "cart/addProduct",

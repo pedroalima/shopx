@@ -1,6 +1,6 @@
 import { Header } from "../components/header";
-import { Cart } from "../features/cart";
-import { Inventory } from "../features/inventory";
+import { Cart } from "../components/cart";
+import { Inventory } from "../components/inventory";
 
 function App() {
 	return (

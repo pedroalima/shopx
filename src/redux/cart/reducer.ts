@@ -18,7 +18,7 @@ type CartStateType = {
 const initialState = {
 	products: []
 };
-
+// REDUCER
 export const cartReducer = (state: CartStateType = initialState , action: CartActionType) => {
 	// Verifica se o produto já existe
 	const productIsAlready = state.products.some((product) => product.id === action.payload.id);
