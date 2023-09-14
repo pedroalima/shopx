@@ -10,6 +10,7 @@ import { currencyBR } from "../../utils/localCurrency";
 
 export const CartItem = ({ product } : { product: ProductType}) => {
 	const dispatch = useDispatch();
+	const subTotal = product.price * product.quantity;
 
 	const handleRemoveProduct = (product: ProductType) => {
 		dispatch(removeProduct(product));
@@ -61,7 +62,11 @@ export const CartItem = ({ product } : { product: ProductType}) => {
 			</Box>
 			<Box display="flex" flexDirection="column" alignItems="center">
 				<Span>{currencyBR(product.price)} </Span>
-				<Span>( {currencyBR((product.price * product.quantity))} )</Span>
+				{subTotal === product.price ? (
+					<Span></Span>
+				) : (
+					<Span>( {currencyBR(subTotal)} )</Span>
+				)}
 			</Box>
 		</Box>
 	);
