@@ -10,20 +10,8 @@ export const CartWrapper = styled.section`
     min-height: 10%;
 `;
 
-export const CartItemsWrapper = styled.div`
-    display: flex;
-    justify-content: space-between;
-`;
-
-export const CartItemsQuantityWrapper = styled.div`
-    display: flex;
-    justify-content: start;
-    gap: 0.5rem;
-`;
-
 export const TotalPrice = styled.h2`
     font-size: ${prop => prop.theme.fontSize.tertiary};
     display: flex;
     justify-content: space-between;
 `;
-
