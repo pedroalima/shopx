@@ -8,6 +8,9 @@ export const CartWrapper = styled.section`
     bottom: 0;
     width: 100%;
     min-height: 10%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
 `;
 
 export const TotalPrice = styled.h2`

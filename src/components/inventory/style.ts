@@ -5,7 +5,7 @@ export const InventoryWrapper = styled.section`
     margin: 2rem 0 7rem 0;
 
     @media screen and (min-width: ${prop => prop.theme.breakpoints.sm}) {
-        margin: 4.3rem 0;
+        margin: 3rem 0 7rem;
     };
 `;
 
@@ -15,4 +15,5 @@ export const InventoryList = styled.ul`
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
+    justify-content: stretch;
 `;

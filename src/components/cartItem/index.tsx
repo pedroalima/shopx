@@ -1,6 +1,5 @@
 // Style
-import * as S from "./style";
-import { Icon, Button, Box } from "@mui/material";
+import { Icon, Box, IconButton } from "@mui/material";
 // Types
 import { ProductType } from "../../redux/cart/reducer";
 // Resources
@@ -25,33 +24,42 @@ export const CartItem = ({ product } : { product: ProductType}) => {
 	};
 
 	return (
-		<S.CartItemsWrapper>
-			<span>{product.name}</span>
-
-			<Box>
-				<Button 
+		<Box 
+			display="flex" 
+			justifyContent="space-between" 
+			alignItems="center"
+			sx={{
+				background: "#1d242c",
+				borderRadius: "10px",
+				p: "0.1rem 0.5rem"
+			}}>
+			<Box display="flex" justifyContent="space-between" alignItems="center" width="20%">
+				<IconButton 
 					size="small" 
 					color="warning" 
 					onClick={()=> handleProductMinus(product)}>
-					<Icon>remove</Icon>
-				</Button>
-				<span>{product.quantity}</span>
-				<Button
+					<Icon fontSize="small">remove</Icon>
+				</IconButton>
+				<Box width="20px" display="flex" justifyContent="center" alignItems="center">
+					<span>{product.quantity}</span>
+				</Box>
+				<IconButton
 					size="small" 
 					color="success" 
 					onClick={()=> handleProductPlus(product)}>
-					<Icon>add</Icon>
-				</Button>
+					<Icon fontSize="small">add</Icon>
+				</IconButton>
+				<Box width="120px">
+					<span>{product.name}</span>
+				</Box>
+				<IconButton 
+					size="small" 
+					color="error" 
+					onClick={()=> handleRemoveProduct(product)}>
+					<Icon fontSize="small">close</Icon>
+				</IconButton>
 			</Box>
-                        
-			<Button 
-				size="small" 
-				color="error" 
-				onClick={()=> handleRemoveProduct(product)}>
-				<Icon>close</Icon>
-			</Button>
-                        
 			<span>{currencyBR(product.price)} ( {currencyBR((product.price * product.quantity))} )</span>
-		</S.CartItemsWrapper>
+		</Box>
 	);
 };
