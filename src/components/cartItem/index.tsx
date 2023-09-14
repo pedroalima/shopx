@@ -1,4 +1,5 @@
 // Style
+import { Span } from "./style";
 import { Icon, Box, IconButton } from "@mui/material";
 // Types
 import { ProductType } from "../../redux/cart/reducer";
@@ -6,7 +7,6 @@ import { ProductType } from "../../redux/cart/reducer";
 import { productMinus, productPlus, removeProduct } from "../../redux/cart/actions";
 import { useDispatch } from "react-redux";
 import { currencyBR } from "../../utils/localCurrency";
-
 
 export const CartItem = ({ product } : { product: ProductType}) => {
 	const dispatch = useDispatch();
@@ -33,7 +33,7 @@ export const CartItem = ({ product } : { product: ProductType}) => {
 				borderRadius: "10px",
 				p: "0.1rem 0.5rem"
 			}}>
-			<Box display="flex" justifyContent="space-between" alignItems="center" width="20%">
+			<Box display="flex" justifyContent="space-between" alignItems="center" width="190px">
 				<IconButton 
 					size="small" 
 					color="warning" 
@@ -41,7 +41,7 @@ export const CartItem = ({ product } : { product: ProductType}) => {
 					<Icon fontSize="small">remove</Icon>
 				</IconButton>
 				<Box width="20px" display="flex" justifyContent="center" alignItems="center">
-					<span>{product.quantity}</span>
+					<Span>{product.quantity}</Span>
 				</Box>
 				<IconButton
 					size="small" 
@@ -50,7 +50,7 @@ export const CartItem = ({ product } : { product: ProductType}) => {
 					<Icon fontSize="small">add</Icon>
 				</IconButton>
 				<Box width="120px">
-					<span>{product.name}</span>
+					<Span>{product.name}</Span>
 				</Box>
 				<IconButton 
 					size="small" 
@@ -59,7 +59,10 @@ export const CartItem = ({ product } : { product: ProductType}) => {
 					<Icon fontSize="small">close</Icon>
 				</IconButton>
 			</Box>
-			<span>{currencyBR(product.price)} ( {currencyBR((product.price * product.quantity))} )</span>
+			<Box display="flex" flexDirection="column" alignItems="center">
+				<Span>{currencyBR(product.price)} </Span>
+				<Span>( {currencyBR((product.price * product.quantity))} )</Span>
+			</Box>
 		</Box>
 	);
 };
