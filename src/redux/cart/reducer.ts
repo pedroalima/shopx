@@ -25,7 +25,7 @@ export const cartReducer = (state: CartStateType = initialState , action: CartAc
 
 	switch(action.type) {
 	case "cart/addProduct":
-		// se existir, aumentar a quantidade em 1
+		// se existir, apenas aumentar a quantidade em 1
 		if (productIsAlready) {
 			return {
 				// retorne todo state
@@ -33,8 +33,8 @@ export const cartReducer = (state: CartStateType = initialState , action: CartAc
 				// alterando products
 				products: state.products.map( product => // iterando sobre cada product
 					product.id === action.payload.id // se o id do product for igual ao do clicado
-						? { ...product, quantity: product.quantity + 1} 
-						: product
+						? { ...product, quantity: product.quantity + 1} // sim, aumenta a quantidade em 1
+						: product // não, apenas retorna o product
 				)
 			};
 		}
